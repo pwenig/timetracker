@@ -1,0 +1,36 @@
+<h1>Timecards</h1>
+<h2>Next Invoice Due: Fri Aug 25th (confirm)</h1>
+
+<table>
+  <thead>
+    <tr>
+    <th>Name</th>
+      <th>Time in</th>
+      <th>Time out</th>
+      <th>Tasks</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timecards.each do |timecard| %>
+      <tr>
+        <td><%= link_to timecard.user.first_name, edit_user_registration_path(current_user) %></td>
+        <td><%= timecard.time_in.strftime('%a %b %d, %Y %I:%M %p') %></td>
+        <% if timecard.time_out  %>
+        <td><%= timecard.time_out.strftime('%a %b %d, %Y %I:%M %p') %></td>
+        <% end  %>
+        <td><%= timecard.tasks %></td>
+        <td><%= timecard.notes %></td>
+        <td><%= link_to 'Show', timecard %></td>
+        <td><%= link_to 'Edit', edit_timecard_path(timecard) %></td>
+        <td><%= link_to 'Destroy', timecard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Timecard', new_timecard_path %>

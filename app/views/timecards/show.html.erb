@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Time in:</strong>
+  <%= @timecard.time_in.strftime('%a %b %d, %Y %I:%M %p') %>
+</p>
+
+<% if @timecard.time_out %>
+<p>
+  <strong>Time out:</strong>
+  <%= @timecard.time_out.strftime('%a %b %d, %Y %I:%M %p') %>
+</p>
+<% end %>
+
+<p>
+  <strong>Tasks:</strong>
+  <%= @timecard.tasks %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @timecard.notes %>
+</p>
+
+<%= link_to 'Edit', edit_timecard_path(@timecard) %> |
+<%= link_to 'Back', timecards_path %>
